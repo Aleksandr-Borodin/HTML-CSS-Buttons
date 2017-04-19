@@ -1,0 +1,74 @@
+<html>
+<head>
+	<META HTTP-EQUIV = "Content-Type" CONTENT = "text/html; charset = utf-8">
+	<style>
+a.button {
+  position: relative;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: bold;
+  color: hsl(88, 70%, 30%);
+  text-shadow: rgba(255,255,255,.5) 0 -1px 0, rgba(0,0,0,.2) 0 .18em .15em;	/* глубокая тень */
+  text-decoration: none;
+  user-select: none;
+  margin: .5em;
+  padding: .5em .6em .4em .6em;
+  border-radius: 8px;
+  border-top: 1px solid rgba(255,255,255,.1);
+	/* прозрачно-белая верхняя рамка */	
+ 
+  border-bottom: 1px solid rgba(0,0,0,.1);
+	/* прозрачно-серая нижняя рамка */
+  outline: none;
+  background: #a2cf70 radial-gradient(rgba(255,255,255,0), rgba(255,255,255,.5));
+	/* полупрозрачный радиальный градиент наложенный на одноцветный фон */
+  box-shadow:
+   inset rgba(255,255,255,.6) 0 .3em .3em,
+	/* верхняя внутрення тень */
+   inset rgba(0,0,0,.2) 0 -.1em .3em,
+	/* нижняя внутрення тень */
+   rgb(128,161,103) 0 7px 1px,
+	/* нижняя внешняя зеленая тень */
+   rgba(0,0,0,.2) 0 .5em 5px;
+	/* нижняя внешняя серая тень */
+  transition: background .2s ease-in-out;
+	/* переход для цвета фона при наведении */
+}
+a.button:hover {
+  background-color: hsl(88, 70%, 75%);
+}
+a.button:active {
+  top: .2em;	/* при нажатии вся кнопка поедет вниз */
+  color: rgba(254,255,255,.9);	/* при нажатии изменится цвет текста кнопки */
+  text-shadow: rgba(0,0,0,.2) 0 1px 2px;
+	/* при нажатии изменится тень текста - иллюзия, что тень не изменила своего положения, а как бы все остальное поехало вниз */
+  box-shadow:
+   inset rgba(255,255,255,.6) 0 .3em .3em,
+   inset rgba(0,0,0,.2) 0 -.1em .3em,
+	/* внутренние тени при нажати не изменятся */
+   rgba(0,0,0,.4) 0 .1em 1px,
+	/* иллюзия, что расположение тени не изменилось, но поменялся цвет */
+   rgba(0,0,0,.3) 0 .2em 6px;
+	/* слегка изменится цвет, и тень поедет слегка вверх относительно :active-нового расположения кнопки - навстречу движения кнопки */
+}
+a.button:after {
+  content:  "";
+  position:  absolute; 
+  width:   90%;	
+	/* ширина 90, чтобы слева и справа получились отступы по 5*/
+  height:  60%;
+  top:   0;
+  left:   5%;	/* отпозиц от левого краю кнопки, 5 слева, тогда при ширине 90, 5 будет и справа */
+  border-radius:    .5em .5em 1em 1em / .5em .5em 2em 2em;
+  background-image: linear-gradient(rgba(255,255,255,.55), rgba(255,255,255,.3)); 
+}
+.button:active:after {
+  opacity: .6;	/* при нажатии изменится прозрачность добавленного псевдо-эл. after */
+}*/
+	</style>
+</head>
+<body>
+	<p>Вот так с помощью псевдо-эл. и теней можно создать иллюзию многоблочной кнопки</p>
+	<a href="#" class="button">кнопка</a>
+</body>
+</html>

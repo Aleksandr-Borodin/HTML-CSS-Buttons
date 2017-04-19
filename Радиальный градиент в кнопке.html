@@ -1,0 +1,40 @@
+<html>
+<head>
+	<META HTTP-EQUIV = "Content-Type" CONTENT = "text/html; charset = utf-8">
+	<style>
+a.button1 {
+  position: relative;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: -1px -1px #000;
+  user-select: none;
+  padding: .8em 2em;
+  outline: none;
+  background-color: #000;
+  background-image:	linear-gradient(45deg, rgba(255,255,255,.0) 30%, rgba(255,255,255,.8), rgba(255,255,255,.0) 70%),
+						/* изначально его не будет видно, он поедеть через кнопку при нажатии */
+					radial-gradient(190% 100% at 50% 0%, rgba(255,255,255,.7) 0%, rgba(255,255,255,.5) 50%, rgba(0,0,0,0) 50%);
+					
+  background-repeat: no-repeat;
+	/* чтобы создать единичный линейный градиент, а не заполнить им поверх радиального кнопку */
+  background-size: 200% 100%, auto;
+  
+  background-position: 200% 0, 0 0;
+  box-shadow: rgba(0,0,0,.3) 0 2px 5px;
+} 
+a.button1:active {
+  top: 1px;
+  box-shadow: none;
+}
+a.button1:hover {
+  transition: .5s linear;
+  background-position: -200% 0, 0 0;
+}
+	</style>
+</head>
+<body>
+	<p>Радиальный градиент, до at - форма радиального градиента, после - его расположение</p>
+<a href="#" class="button1">кнопка</a>
+</body>
+</html>

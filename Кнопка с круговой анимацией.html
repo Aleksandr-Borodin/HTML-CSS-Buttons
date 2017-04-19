@@ -1,0 +1,135 @@
+<html>
+<head>
+	<META HTTP-EQUIV = "Content-Type" CONTENT = "text/html; charset = utf-8">
+	<style>
+a.button26	{
+			position: relative;
+			display: inline-block;
+			border-radius: 100px;
+			outline: none;
+			box-shadow: 0 0 2px 2px rgba(0,0,0,.3) inset, 0 1px 1px rgba(255,255,255,.2);
+			background: #8a7b78 linear-gradient(#8a7b78, #cdcdcd);
+			}
+			
+a.button26:after	{
+	/* Псевдо-эл. :after добавляется после a, тоесть после span, поэтому он его перекрывает, а если бы исп. :before,
+	то тогда span перекрывал бы псевдо-эл. */	
+					content: "\260e";	/* символ телефона */
+					position: absolute;
+					top: 0;
+					left: 0;
+					bottom: 0;
+					right: 0;
+						/* абс. позиц. со значениями 0 сами по себе не отцентрировали псевдо-эл. :after */
+					width: 80px;
+					height: 80px;
+						/* задаем явные границы псевдо-эл. :after */
+					line-height: 80px;
+						/* отцентрируем по вертикали строку с символом */
+					font-size: 300%;
+					font-weight: 700;
+					text-align: center;
+					text-shadow: #2e7ebd 0 1px 2px;
+					color: #fff;
+					margin: auto;
+						/* отцентрируем по X и Y весь псевдо-эл. :after */
+					border-radius: 80px;
+					background: #75a7cd linear-gradient(#75a7cd, #5084a8);	/* фон синий-градиент */
+					box-shadow:	0 2px 2px rgba(255,255,255,.5) inset,	/* верхняя внутренняя светлая тень */
+								0 -2px 2px rgba(0,0,0,.3) inset,		/* нижняя внутренняя более темная тень */
+								0 0 2px 2px rgba(0,0,0,.3);				/* внешяя размытая тень псевдо-эл. :after */
+					}
+
+a.button26 span {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 100px;
+  border: solid transparent;
+  border-width: 0 0 0 50px;
+  border-radius: 100px;
+  outline: none;
+  overflow: hidden;
+}
+a.button26 span:before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  height: 100px;
+  border-right: 50px solid transparent;
+  border-left: 50px solid #bfddf5;
+  border-radius: 100px;
+}
+/* Описание к вышестоящим в: Заполнение - круговая анимация для кнопки.html */
+
+a.button26:focus span	{
+						-webkit-animation: background1 10s linear forwards;
+						animation: background1 10s linear forwards;
+						}
+						
+a.button26:focus span:before	{
+								-webkit-animation: rotate1 10s linear forwards;
+								animation: rotate1 10s linear forwards;
+								}
+								
+a.button26:focus:after	{
+						background: #5390b8 linear-gradient(#5390b8, #6ba9d4);
+							/* при нажатии изменим фон у псевдо-эл :after */
+						}
+						
+@-webkit-keyframes background1	{
+								49.999%	{
+										border-width: 0 0 0 50px;
+										border-color: transparent;
+										}
+								50%,
+								100%	{
+										border-width: 0 50px 0 0;
+										border-color: #bfddf5;	/* Срабатывает в Mozilla, не работает в Chrome */
+										}
+								}
+
+@-webkit-keyframes rotate1	{
+							49.999%	{
+									left: -50px;
+									}
+							50%	{
+								left: 0px;
+								}
+							100%	{
+									-webkit-transform: rotate(360deg);
+									left: 0px;
+									}
+}
+
+@keyframes background1	{
+						49.999%	{
+								border-width: 0 0 0 50px;
+								border-color: transparent;
+								}
+						50%,
+						100%	{
+								border-width: 0 50px 0 0;
+								border-color: #bfddf5;
+								}
+						}
+						
+@keyframes rotate1	{
+					49.999%	{
+							left: -50px;
+							}
+					50%	{
+						left: 0px;
+						}
+					100%	{
+							transform: rotate(360deg);
+							left: 0px;
+							}
+					}
+	</style>
+</head>
+<body>
+	<p>Кнопка с круговой анимацией</p>
+<a href="#" class="button26" tabindex="0"><span></span></a>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html>
+<head>
+	<META HTTP-EQUIV = "Content-Type" CONTENT = "text/html; charset = utf-8">
+	<style>
+	
+/* Задний линейно-градиентный фон - это основной элемент,
+текст и собственно говоря кнопка - это псевдо-эл. :before,
+при наведении меняется фон псевдо-эллемента, и маштабирование-увеличение всей кнопки
+а при нажатии происходит сильное трансформация-маштабирование и изменение видимости кнопки через visibility */
+
+a.button2,
+a.button2:before	{
+					display: inline-block;
+					font-size: 20px;
+					color: #fff;	/* белый цвет будет лучше выделяться на сине-голубоватом фоне */
+					text-decoration: none;
+					padding: 8px 15px;	/* отступы будут увеличивать размер кнопки относительно текста внутри тега a */
+					border-radius: 100px;
+					border: solid rgb(4,88,192);
+					border-width: 3px 10px;
+						/* основная темно-синяя сильно заокругленная граница-рамка */
+					outline: none;
+					opacity: 1;	/* изначальня прозрачность */
+					transition: 6s, opacity 0s 9999999s, visibility 0s 9999999s;
+						/* переходы для прозрачности видимости и скорость для всех остальных маштабирований, а точнее, на деле , для маштабирования при наведении*/
+					}
+					
+a.button2	{
+			position: relative;
+			padding: 20px 24px;
+			border: 1px solid rgba(62,153,239,.5);	/* тонкая рамка основного эллемента кнопки */
+			background:	linear-gradient(to left, rgb(62,153,239) 1%, #fff 3%, rgb(44,135,232) 8%, rgba(255,255,255,.3) 50%, rgb(44,135,232) 92%, #fff 97%, 	rgb(62,153,239) 99%) no-repeat;
+				/* Голубоватый линейный градиент справа налево */
+			}
+			
+a.button2:before	{
+					content:  "УЗНАТЬ ПОДРОБНОСТИ";
+					position:  absolute; 
+					bottom: -10px;
+					left: 0;
+					width: calc(100% - (15px + 10px - 1px)*2);
+					text-align: center;
+					background: #fff linear-gradient(rgb(58,160,253), rgb(4,88,192) 60%, rgb(49,112,201));
+					box-shadow: 0 10px 18px rgba(0,0,0,.5);
+					}
+					
+a.button2:hover	{
+				-webkit-transform: scale(1.1, 1.1);
+				transform: scale(1.1, 1.1);	/* маштабирование всей кнопки при наведении */
+}
+
+a.button2:hover:before	{
+						border-color: #0766d8;
+						background: #fff linear-gradient(#3fadff, #0766d8 60%, #3279dd);
+							/* изменение цвета рамки и фона псевдо-эллемента */
+						}
+
+a.button2:focus,
+a.button2:active	{
+					-webkit-transform: scale(2, 2);
+					transform: scale(2, 2);
+					opacity: 0;
+					visibility: hidden;
+					transition: .4s;	/* время маштабирования после нажатия*/
+					}
+	</style>
+</head>
+<body>
+	<p>С помощью текста внутри тега ссылки увеличивается ширина кнопки</p>
+<a href="#" class="button2" tabindex="0">кнопкатексттекст</a>
+</body>
+</html>

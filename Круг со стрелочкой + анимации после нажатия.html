@@ -1,0 +1,119 @@
+<html>
+<head>
+	<META HTTP-EQUIV = "Content-Type" CONTENT = "text/html; charset = utf-8">
+	<style>
+	/* z-index - не нужны! */
+a.button31	{
+			position: relative;
+			display: inline-block;
+			width: 3em;
+			height: 3em;
+			border-radius: 100%;
+			outline: none;
+			background: #ddd;
+			box-shadow:	0 1px rgba(0,0,0,.1) inset,
+						0 1px #fff;
+				/* добавим вверху полупрозрачную внутреннюю тень */
+			}
+			
+a.button31:after,
+a.button31:before	{
+					content: "";
+					position: absolute;
+					top: 7.5%;	/* отпозиционируем до нужного нам уровня */
+					left: -15%;	/* противоположно 2 палочке */
+					right: 0;
+					bottom: 0;
+					width: 30%;	/* размеры относительно родителя */
+					height: 10%;	/* размеры относительно родителя */
+					margin: auto;
+						/* нестандартное выравнивание по центру по оси X и Y! в связке с абсолютным позиционированием */
+					background: white;	/* цвет палочек стрелки */
+					box-shadow:	0 1px rgba(0,0,0,.1) inset,
+								0 1px #fff;
+						/* тень палочек стрелки */
+					
+					-webkit-transform: rotate(45deg);
+					transform: rotate(45deg);
+					}
+					
+a.button31:before	{
+					left: 15%;	/* чтобы 2 часть стрелочки не налазила на первую, иначе после ротации получился бы крестек, а не стрелочка */
+					
+					-webkit-transform: rotate(315deg);
+					transform: rotate(315deg);
+						/*развернем 2 палочку, чтобы получилась стрелка */
+					}
+					
+a.button31:hover,
+a.button31:focus	{
+					background: #e35d31;
+					box-shadow: none;
+						/* при наведении или нажатии на кнопки, у нее изменится фон и исчезнет тень */
+					}
+					
+a.button31:hover:after,
+a.button31:hover:before	{
+						background: yellow;
+						box-shadow: none;
+							/* при наведении или нажатии у палочек стрелочки изменится фон и исчезнет тень */
+						}
+						
+a.button31:focus	{
+					background-image:
+					linear-gradient(120deg, transparent 45%, #e35d31 45%, #e35d31 55%, transparent 55%),
+						/* вставим через линейный градиент одноцветную полоску, которая разделит радиальный градиент - круг -  на двеги неполные дуги */
+						
+					radial-gradient(transparent 20%, #fff 20%, #fff 30%, transparent 30%);
+						/* нарисуем с помощью радиального градиента круг, который прозрачный внутри и снаружи, но имеет одноцветную стенку */
+						
+					-webkit-animation: rotate31 1s linear infinite forwards;
+					animation: rotate31 1s linear infinite forwards;
+						/* в будущем вся кнопка с псевдо-эл. и их свойствами будет анимироваться - вращаться */
+					}
+					
+a.button31:focus:after,
+a.button31:focus:before	{
+						content: "";
+						position: absolute;
+						top: calc(-30% - 4px/2);
+						left: 4px;
+						
+						width: 0;
+						height: 0;
+							/* убрав размеры, мы с помощью границ сделаем из палочек треугольники-наконечники */
+							
+						border-top: 4px solid transparent;
+						border-left: 8px solid #fff;
+						border-bottom: 4px solid transparent;
+							/* превратим палочки в наконечники стрел с фоном радиального градиента */
+							
+						background: transparent;
+						box-shadow: none;
+							/* убирем части наконечников, которые будут мешать */
+
+						-webkit-transform: rotate(0deg);
+						transform: rotate(0deg);
+							/* перевернем наконечники-палочки в нормальное положение */
+						}
+						
+a.button31:focus:before	{
+						top: calc(30% + 4px/2);	/* отпозиционируем вниз */
+						left: -4px;	/* отпозиционируем влево */
+						
+						border-left: none;
+						border-right: 8px solid #fff;
+							/* с помощью рамки, вместо трансформации, изменим вид треугольника-наконечника */
+						}
+
+@-webkit-keyframes rotate31	{100% {-webkit-transform: rotate(360deg);}}							
+@keyframes rotate31	{100% {transform: rotate(360deg);}}
+	/* продолжающиеся (бесконечное) вращение кнопки, а следовательно и ее фонов-градиентов, а также измененных после нажатия псевдо-эл. :before и :after */
+
+	</style>
+</head>
+<body>
+	<p>Сначала стрелка рисуется с помощью псевдо-эллементов, а затем, после нажатия, с помощью градиентов рис. заокругленные палочки, а псевдо-эллементы стают ихними наконечниками, вращается - вся кнопка целиком</p>
+<a href="#" class="button31" tabindex="0"></a>
+</body>
+</html>

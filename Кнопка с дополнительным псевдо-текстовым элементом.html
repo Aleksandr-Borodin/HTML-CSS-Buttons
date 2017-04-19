@@ -1,0 +1,66 @@
+<html>
+<head>
+	<META HTTP-EQUIV = "Content-Type" CONTENT = "text/html; charset = utf-8">
+	<style>
+a.button14 {
+  display: inline-block;
+  text-shadow: 1px 1px #fff;	/* тень текста ссылки */
+  text-decoration: none;		/* убирем подчеркивание */
+  padding: .2em 1em;			/* внутренние отступы, чтобы расширить границы кнопки */
+
+  border: 1px solid #aaa;		/* чботы у кнопки была рамка */
+  border-radius: 100px;			/* заокруглим границы и рамку кнопки */
+  outline: none;				/* ненужный эл */
+  
+  background: #d6dbbf no-repeat;
+	/* основной фон, без-повторений - чтобы градиенты-полоски, в дальнейшем не розмножились */
+ 
+  background-image:
+   linear-gradient(to left, #aaa, #aaa),
+   linear-gradient(to left, #feffe8, #feffe8),
+   linear-gradient(#feffe8, #d6dbbf);
+	 /* один основной полупрозрачный градиент, еще 2 - будущие вертикальные полоски */
+	 
+  background-position: calc(100% - 2.7em) 0, calc(100% - 2.7em + 1px) 0, 0 0;
+	/* отпоционируем две градиент.-полоски, чтобы они были вплотную друг к другу, основной полупрозрачный-град. - без изменений */
+	
+  background-size: 1px 100%, 1px 100%, auto auto;
+	/* уменьшим размеры 2 градиентов, чтобы они стали полосками 1px на 100% */
+}
+
+a.button14:after {
+  content: "\bb";		/* значение юникода, символ */
+  position: relative;	/* чтобы в будуещ при нажатии можно было изменить положение content */
+  bottom: 0;			/* чтобы было начальное значение */
+  display: inline-block;	/* чтобы псевдо-эл. лучше форматировался */
+  margin-left: 1.4em;		/* чтобы псевдо-эл. имел отступ о текста ссылки */
+  vertical-align: middle;	/* чтобы текст ссылки был по центру по вертикали */
+  font-family: "Times","Times New Roman","serif","sans-serif","EmojiSymbols";
+  font-weight: 700;
+  font-size: 140%;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+	/* перевернем значение content на 90 градусов */
+  
+}
+a.button14:hover {
+  background-color: #fdfd9f;
+  background-image:
+   linear-gradient(to left, #aaa, #aaa),
+   linear-gradient(to left, #feffe8, #feffe8),
+   linear-gradient(#fffce7, #fdfd9f);
+	/* при наведение поменяются: цвет фона, основной полупрозрачный градиент, 2 градиента полоски */
+}
+
+a.button14:active:after {
+  bottom: -1.2em;
+  transition: .3s;
+	/* при нажатии поменяется расположение content за указанное время */
+}
+	</style>
+</head>
+<body>
+	<p>абзац</p>
+<a href="#" class="button14">Скачать</a>
+</body>
+</html>

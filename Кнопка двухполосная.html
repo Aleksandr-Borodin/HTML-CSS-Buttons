@@ -1,0 +1,76 @@
+<html>
+<head>
+	<META HTTP-EQUIV = "Content-Type" CONTENT = "text/html; charset = utf-8">
+	<style>
+a.button12 {
+  position: relative;
+  display: inline-block;
+  font-size: 100%;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: #053852 -1px 1px, #053852 1px 1px, #053852 1px -1px, #053852 -1px -1px;
+  user-select: none;	/* чтобы пользователь не мог выделить содержимое кнопки */
+  padding: .3em .7em;
+  text-decoration: none;
+  outline: none; /* ненужный эл., специфика отдельных браузеров не в счет */
+  border-radius: 7px;
+  background: #053852 repeating-linear-gradient(135deg, #053852, #053852 10px, #1679ad 10px, #1679ad 20px, #053852 20px);
+	/* градиент в полоску */
+  box-shadow:
+  
+   inset -2px -2px rgba(0,0,0,.3),		/* внутренняя нижняя-правая тень; */
+   inset 2px 2px rgba(255,255,255,.3);	/* внутрення верхняя-левая тень; */
+  
+  transition: background-position ,1s, text-shadow 2s;
+	/* время изменение тени текста и положения фона (положение фона - не обязательно указывать, остальное - для плавности) */
+}
+
+a.button12:hover, a.button12:focus {
+  text-shadow: #0175b1 -1px 1px, #0175b1 1px 1px, #0175b1 1px -1px, #0175b1 -1px -1px;	
+	/* при наведении или нажатии у текста ссылки изменится тень */
+
+  background: #0175b1 repeating-linear-gradient(135deg, #0175b1, #0175b1 10px, #8fd2f5 10px, #8fd2f5 20px, #0175b1 20px) no-repeat;
+	/* при наведении или нажатии будет осветлен градиент */
+		
+  background-size: 1000% 100%;
+	/* при наведении или нажатии будет изменен размер градиента - увеличен в 10 раз по оси Х */
+}
+a.button12:hover {
+  background-position: 0 0; 
+  /* как я понимаю, отпоциционируем 2-х полосный градиент, чтобы макс. продлить длительность его движения,
+  а вообще это необязательно */
+}
+a.button12:focus {
+  color: rgba(255,255,255,0);	/ сделаем цвет текста ссылки прозрачным;
+  background-position: 900% 0;	/ изменим позиц. 2-х полосного градиента, чтобы фону было куда ехать;
+  
+  transition: background-position linear 999s, color 5s;
+	/* время за которое проедет градиент, чем больше - тем медленнее будет двигаться, по какой ф-ции, и за сколько секунд текст станет прозрачным */
+}
+a.button12:after {
+  content: "загрузка";
+  position: absolute;	/ чтобы он выпал с нормального потока;
+  top: 0;		
+  left: .2em;
+	/* отпозиционируем content псевдо-эл. :after, сдвинем его слегка влево - для лучшей симетрии */
+	
+  padding: .3em .1em;	/* внутренние отступы content псевдо-эл. :after */
+  color: rgba(0,0,0,0);	/* цвет content псевдо-эл. :after не просто белый, а и прозрачный */
+  text-shadow: none;	/* изначально тень у content псевдо-эл. :after - отсутствует */
+}
+a.button12:focus:after {
+  color: #fff;		/* для того чтобы содержимое content псевдо-эл. :after стало видимым */
+  text-shadow: #0175b1 -1px 1px, 
+				#0175b1 1px 1px, 
+				#0175b1 1px -1px, 
+				#0175b1 -1px -1px;
+	/* добавляем тень к содержимому content псевдо-эл. :after, после того как у него появился цвет */
+  transition: 10s;	/* время появления надписи загрузка псевдо-эл. :after */
+}
+	</style>
+</head>
+<body>
+	<p>абзац</p>
+<a href="#" class="button12" tabindex="0">кнопка</a>
+</body>
+</html>
